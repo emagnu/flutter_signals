@@ -8,7 +8,8 @@ import 'package:signals/signals_flutter.dart';
 //  PARTS
 //  SIGNALS
 final counter = signal<int>(0);
-final counterType = computed(() => counter.value.isEven ? 'Even' : 'Odd');
+final counterType =
+    computed<String>(() => counter.value.isEven ? 'Even' : 'Odd');
 //
 
 class ListenPage extends StatelessWidget {
@@ -18,6 +19,7 @@ class ListenPage extends StatelessWidget {
   Widget build(BuildContext context) {
     counter.listen(context, () {
       final snackBar = SnackBar(content: Text('Counter value is $counterType'));
+
       if (counter.value.remainder(3) == 0 && counter.value > 3) {
         debugPrint(counter.value.remainder(3).toString());
         ScaffoldMessenger.of(context)

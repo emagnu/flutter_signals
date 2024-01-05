@@ -8,7 +8,8 @@ import 'package:signals/signals_flutter.dart';
 //  PARTS
 //  SIGNALS
 final counter = signal<int>(0);
-final counterType = computed(() => counter.value.isEven ? 'Even' : 'Odd');
+final counterType =
+    computed<String>(() => counter.value.isEven ? 'Even' : 'Odd');
 //
 
 class ComputedPage extends StatelessWidget {
